@@ -71,21 +71,30 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
             </button>
 
             {/* Desktop Search Bar */}
-            <div className="hidden md:flex flex-1 max-w-2xl mx-8">
+            <div className="hidden md:flex flex-1 max-w-lg mx-8">
               <form className="w-full">
                 <div className="relative">
                   <input
                     type="search"
                     id="default-search"
-                    className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                    className="block w-full p-4 ps-10 text-sm  rounded-lg"
                     placeholder="Search Category"
                     required
+                    style={{ border: "2px solid rgb(82, 82, 162)"}}
                   />
                   <button
                     type="submit"
-                    className="absolute end-2.5 bottom-2.5 bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800"
+                    className="absolute top-0 right-0   text-white"
+                    style={{ backgroundColor: "rgb(82, 82, 162)",
+                      height:"100%",
+                      width:"12%",
+                      display:"flex",
+                      justifyContent:"center",
+                      alignItems:"center",
+                    
+                     }}
                   >
-                    Search
+                    <Search/>
                   </button>
                 </div>
               </form>
@@ -154,12 +163,21 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Search Category"
                 required
+                style={{ border: "2px solid rgb(82, 82, 162)"}}
               />
               <button
                 type="submit"
-                className="absolute end-2.5 bottom-2.5 bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800"
+                className="absolute  top-0 right-0   text-white "
+                style={{ backgroundColor: "rgb(82, 82, 162)",
+                  height:"100%",
+                  width:"17%",
+                  display:"flex",
+                  justifyContent:"center",
+                  alignItems:"center",
+                
+                 }}
               >
-                Search
+                <Search/>
               </button>
             </div>
           </form>
@@ -187,7 +205,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
       {/* Desktop Navigation */}
       <div className="hidden md:block bg-gray-50">
         <div className="container mx-auto px-4">
-          <nav className="flex space-x-8 h-14 text-base items-center">
+          <nav className="flex space-x-8 h-13 text-base items-center">
             <Dropdown categories={categories} />
             {categories.map((item) => (
               <Link
