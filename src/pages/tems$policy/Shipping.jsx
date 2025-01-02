@@ -23,13 +23,13 @@ const Shipping = () => {
         <div className="container">
           <div className="ck-content">
             <h3 className="section-heading">
-              <strong>DigiHUbUnique Small CENTERS - Service Terms &amp; Conditions</strong>
+              <strong>Finunique Small Pvt Ltd Small CENTERS - Service Terms &amp; Conditions</strong>
             </h3>
             <h3 className="section-heading">
               <strong>Introduction</strong>
             </h3>
             <p>
-              Welcome to DigiHUbUnique Services (hereinafter referred to as "DigiHUbUnique Small Pvt Ltd"). By signing the Service Form (hereinafter referred to as the "Form") and handing over your product(s) for service, you agree to abide by these Terms and Conditions. These terms govern the service and repair of your product(s) by Digital Services Centers through its after-sales service, operated by an independent third party. If you do not agree to these terms and conditions, please do not submit the Form or hand over your product(s) for service.
+              Welcome to Finunique Small Pvt Ltd Services (hereinafter referred to as "Finunique Small Pvt Ltd Small Pvt Ltd"). By signing the Service Form (hereinafter referred to as the "Form") and handing over your product(s) for service, you agree to abide by these Terms and Conditions. These terms govern the service and repair of your product(s) by Digital Services Centers through its after-sales service, operated by an independent third party. If you do not agree to these terms and conditions, please do not submit the Form or hand over your product(s) for service.
             </p>
 
             <h3 className="section-heading">
