@@ -1,41 +1,135 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import main_banner from "../../assest/main_banner.png";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+import sl3 from "../../assest/sl-3.png";
+import sl4 from "../../assest/sl-4.png";
+import sl5 from "../../assest/sl-5.png";
+import { MoveRight } from "lucide-react";
 
-export default function Banner() {
+const Banner: React.FC = () => {
   return (
-    <div
-      className="relative h-[450px] sm:h-[500px] md:h-[600px] "
-      style={{ backgroundColor: "rgb(82, 82, 162)" }}
-    >
-      <div className="container mx-auto px-4 h-full flex flex-col md:flex-row items-center w-full">
-        {/* Left Section */}
-        <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
-            Discover the Latest
-            <br />
-            Tech Innovations
-          </h1>
-          <p className="text-lg sm:text-xl text-white px-4 md:px-0">
-            Shop the most advanced gadgets and electronics at unbeatable prices
-          </p>
-          <div className="flex justify-center md:justify-start">
-            <button className="flex items-center space-x-2 bg-white text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-indigo-700 hover:text-white transition">
-              <span>Shop Now</span>
-              <ArrowRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
+    <div className="bg-gradient-to-r from-[#5252a2] to-[#5252a2]">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={30}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        autoplay={{
+          delay: 10000, // Adjusted autoplay delay for better pace
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Navigation, Autoplay]}
+        className="mySwiper w-full bg-gradient-to-r from-[#5252a2] to-[#5252a2]"
+      >
+        
+        <SwiperSlide>
+          <div className="  w-full h-full ">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-full h-full">
+              {/* Left Section */}
+              <div className="flex flex-col justify-center space-y-4  px-8 md:px-12 lg:px-20 text-white">
+              <span className="text-sm text-primary font-medium">Save Big on Top-Selling Gadgets</span>
+              <h3 className="text-4xl lg:text-5xl font-bold  mb-4">Unbeatable Tech Deals</h3>
+                <p className="text-base lg:text-lg leading-relaxed">
+                  Huge discounts on smartphones, laptops, and more. Limited-time
+                  offers—shop now!
+                </p>
+                <div className="w-fit rounded-lg bg-white text-black">
+                  <a
+                    href="/products"
+                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
+                  >
+                    <div>Shop Now</div>
+                     <MoveRight size={20} />
+                  </a>
+                </div>
+              </div>
 
-        {/* Right Section */}
-        <div className="flex justify-center items-center h-full w-full md:w-1/2 mt-6 md:mt-0">
-          <img
-            src={main_banner}
-            alt="Latest Technology"
-            className="max-h-[300px] sm:max-h-[400px] md:max-h-[500px] w-auto"
-          />
-        </div>
-      </div>
+              {/* Right Section */}
+              <div className="flex justify-center items-center">
+                <img
+                  src={sl3}
+                  alt="slider image"
+                  className="object-cover w-full max-w-md h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className=" w-full h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-full h-full">
+              {/* Left Section */}
+              <div className="flex flex-col justify-center space-y-4  px-8 md:px-12 lg:px-20 text-white">
+                <span className="text-sm text-primary font-medium">Fresh Gadgets, Latest Innovations</span>
+                <h3 className="text-4xl lg:text-5xl font-bold  mb-4">New Arrivals: Cutting-Edge Tech</h3>
+                <p className=" text-xl lg:text-2xl leading-relaxed">
+                  Explore the latest in tech— from smartwatches to home automation. Shop new arrivals now!
+                </p>
+                <div className="w-fit rounded-lg bg-white text-black">
+                  <a
+                    href="/products"
+                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
+                  >
+                    <div>Shop Now</div>
+                     <MoveRight size={20} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div className="flex justify-center items-center">
+                <img
+                  src={sl4}
+                  alt="slider image"
+                  className="object-cover w-full max-w-md h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="w-full h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  mb-6 w-full h-full">
+              {/* Left Section */}
+              <div className="flex flex-col justify-center space-y-4 px-8 md:px-12 lg:px-20 text-white">
+                <span className="text-sm text-primary font-medium">Trusted by Thousands of Happy Customers</span>
+                <h3 className="text-4xl lg:text-5xl font-bold mb-4">Shop Best-Selling Electronics</h3>
+                <p className=" text-base lg:text-lg leading-relaxed">
+                  Shop our most popular electronics and see why customers love them!
+                </p>
+                <div className="w-fit rounded-lg bg-white text-black">
+                  <a
+                    href="/products"
+                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
+                  >
+                    <div>Shop Now</div>
+                     <MoveRight size={20} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div className="flex justify-center items-center">
+                <img
+                  src={sl5}
+                  alt="slider image"
+                  className="object-cover w-full max-w-md h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
-}
+};
+
+export default Banner;
