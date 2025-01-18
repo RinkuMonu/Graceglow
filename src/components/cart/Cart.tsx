@@ -1,9 +1,9 @@
 import React from "react";
 import { X, ShoppingCart, Trash2 } from "lucide-react";
-import Swal from "sweetalert2"; // Import SweetAlert
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { removeItemFromCart, updateQuantity } from "../../reduxslice/CartSlice"; // Import actions
+import { removeItemFromCart, updateQuantity } from "../../reduxslice/CartSlice";
 
 interface CartProps {
   isOpen: boolean;
@@ -13,9 +13,7 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate
-
-  if (!isOpen) return null;
+  const navigate = useNavigate();
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -41,14 +39,13 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
   };
 
   const handleCheckout = () => {
-    // Define payment options
     const options = {
-      key: "rzp_test_qWAN0qGk5syg5o", // Razorpay Test Key ID
-      amount: total * 100, // Amount in paise (100 INR)
+      key: "rzp_test_qWAN0qGk5syg5o",
+      amount: total * 100,
       currency: "INR",
       name: "DigihubTech",
-      description: " Transaction",
-      image: "https://your-logo-url.com/logo.png", // Optional logo
+      description: "Transaction",
+      image: "https://your-logo-url.com/logo.png",
       handler: function (response: any) {
         Swal.fire({
           title: "Payment Successful",
@@ -69,10 +66,8 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
       },
     };
 
-    // Initialize Razorpay
     const razorpay = new Razorpay(options);
 
-    // Handle Payment Failure
     razorpay.on("payment.failed", function (response: any) {
       Swal.fire({
         title: "Payment Failed",
@@ -85,13 +80,23 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
       });
     });
 
-    // Open Razorpay UI
     razorpay.open();
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded-lg w-full max-w-md relative shadow-xl">
+    <div
+      className={`fixed inset-0 z-50 flex justify-end  transition-transform duration-700 ${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      }`}
+    >
+      {/* Overlay */}
+      <div
+        className="fixed inset-0  bg-opacity-50"
+        onClick={onClose}
+      ></div>
+
+      {/* Modal Content */}
+      <div className="bg-white w-96 p-6 relative shadow-xl h-full overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -105,6 +110,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
           Your Cart
         </h2>
 
+        {/* Cart Items */}
         <ul className="space-y-4">
           {cartItems.map((item) => (
             <li
@@ -127,23 +133,19 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                {/* Decrement Button */}
                 <button
                   className="px-3 py-1 border rounded-md text-gray-600 hover:text-gray-900"
                   onClick={() => handleDecrement(item.id)}
                 >
                   -
                 </button>
-                {/* Quantity Display */}
                 <span className="text-sm font-medium">{item.quantity}</span>
-                {/* Increment Button */}
                 <button
                   className="px-3 py-1 border rounded-md text-gray-600 hover:text-gray-900"
                   onClick={() => handleIncrement(item.id)}
                 >
                   +
                 </button>
-                {/* Delete Button */}
                 <button
                   className="text-red-600 hover:text-red-800"
                   onClick={() => handleDelete(item.id)}
@@ -170,7 +172,6 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
               <button
                 onClick={onClose}
                 className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
-                // Add SweetAlert handler here
               >
                 Checkout
               </button>
