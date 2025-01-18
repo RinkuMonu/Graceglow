@@ -104,19 +104,21 @@ export default function AddresShiping({ cartItems, onClose }) {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
+                <div>
+                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
                       Full Name
                     </label>
                     <input
                       type="text"
+                      id="fullName"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300  shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     />
                   </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
                       Email
@@ -126,13 +128,9 @@ export default function AddresShiping({ cartItems, onClose }) {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     />
                   </div>
-                </div>
-
-                {/* Contact & Location */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
                       Phone
@@ -142,9 +140,14 @@ export default function AddresShiping({ cartItems, onClose }) {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     />
                   </div>
+                </div>
+
+                {/* Contact & Location */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
                       State
@@ -153,16 +156,13 @@ export default function AddresShiping({ cartItems, onClose }) {
                       name="state"
                       value={formData.state}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     >
                       <option value="delhi">Delhi</option>
                       <option value="maharashtra">Maharashtra</option>
                       <option value="karnataka">Karnataka</option>
                     </select>
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
                       City
@@ -172,10 +172,11 @@ export default function AddresShiping({ cartItems, onClose }) {
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     />
                   </div>
-                  <div>
+                </div>
+                <div>
                     <label className="block text-sm font-medium text-gray-700">
                       Address
                     </label>
@@ -184,11 +185,9 @@ export default function AddresShiping({ cartItems, onClose }) {
                       name="address"
                       value={formData.address}
                       onChange={handleInputChange}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     />
                   </div>
-                </div>
-
                 {/* Shipping Method */}
                 <div className="space-y-4">
                   <div className="flex items-center">
@@ -277,7 +276,7 @@ export default function AddresShiping({ cartItems, onClose }) {
                     rows="4"
                     value={formData.orderNotes}
                     onChange={handleInputChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none ring-2 ring-indigo-500"
                     placeholder="Notes about your order, e.g. special notes for delivery"
                   />
                 </div>
@@ -289,7 +288,7 @@ export default function AddresShiping({ cartItems, onClose }) {
                     name="requiresInvoice"
                     checked={formData.requiresInvoice}
                     onChange={handleInputChange}
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded "
                   />
                   <label className="ml-2 block text-sm text-gray-900">
                     Requires company invoice

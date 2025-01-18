@@ -3,7 +3,8 @@ import { Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import img1 from "../../assest/4.png";
 import Dropdown from "../../pages/Dropdown";
-
+import { FaBagShopping } from "react-icons/fa6";
+import { IoHeartOutline } from "react-icons/io5";
 interface NavbarProps {
   onCartClick: () => void;
   cartItemCount: number;
@@ -123,7 +124,8 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                 onClick={onCartClick}
                 className="flex items-center space-x-1 hover:text-indigo-600"
               >
-                <ShoppingCart className="h-5 w-5" />
+                <FaBagShopping />
+                {/* <ShoppingCart className="h-5 w-5" /> */}
                 <span className="hidden sm:inline">Cart ({cartItemCount})</span>
               </button>
 
