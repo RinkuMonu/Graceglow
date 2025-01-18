@@ -34,7 +34,7 @@ const TrendingProducts = ({ addToCart }: { addToCart: (product: any) => void }) 
                 >
                   Add to Cart
                 </button>
-              </div>
+              </div> 
             </div>
           ))}
         </div>
