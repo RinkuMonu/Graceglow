@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
   ];
 
   return (
-    <div className="sticky top-0 z-50 bg-white shadow-sm">
+    <div className="sticky top-0 z-10 bg-white shadow-sm">
       {/* Navbar Top */}
       <div className="border-b">
         <div className="container mx-auto px-4">
