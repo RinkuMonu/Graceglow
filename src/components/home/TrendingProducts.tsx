@@ -354,8 +354,8 @@ const TrendingProducts = ({
                   </span>
                 </div>
               </div>
-
-            </div>
+              
+            
           ))}
         </div>
       </div>
