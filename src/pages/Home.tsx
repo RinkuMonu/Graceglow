@@ -41,9 +41,9 @@ export default function Home({ addToCart }: HomeProps) {
       <TrendingProducts addToCart={addToCart} /> {/* Pass addToCart here */}
       <TopCategories />
       <Newsletter />
-      <div>
+      {/* <div>
         <button onClick={handlePayment}>pay now</button>
-      </div>
+      </div> */}
     </>
   );
 }
