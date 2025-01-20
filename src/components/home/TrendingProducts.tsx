@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
+import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { products } from "../../data/products"; // Import shared products data
-import sl3 from "../../assest/sl-3.png";
 
 const TrendingProducts = ({
   addToCart,
@@ -48,7 +47,7 @@ const TrendingProducts = ({
                 {/* This div will become visible when hovered */}
                 <div className="absolute inset-0  bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-                <div className="absolute left-5 top-[57px] opacity-0 invisible group-hover:opacity-100 group-hover:visible z-10  transition-opacity duration-300">
+                <div className="absolute left-5 top-[57px] opacity-0 invisible group-hover:opacity-100 group-hover:visible  transition-opacity duration-300">
                   <div className="flex flex-col">
                     {/* Action buttons */}
                     <button
@@ -78,16 +77,16 @@ const TrendingProducts = ({
                         id="default-modal"
                         tabIndex={-1}
                         aria-hidden="true"
-                        className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
+                        className="fixed  inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
                         onClick={closeModal}
                       >
                         <div
-                          className="relative p-4 w-full max-w-[80vw] bg-white rounded-lg shadow-lg mt-10 grid grid-cols-1 md:grid-cols-2 max-h-[100vh] overflow-y-auto"
+                          className="relative bottom-4 p-4 w-full max-w-[80vw] bg-white rounded-lg shadow-lg mt-10 grid grid-cols-1 md:grid-cols-2 max-h-[90vh] overflow-y-auto "
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <div className="flex items-center justify-center">
+                          <div className="flex items-center justify-center p-10">
                             <img
-                              className="p-8 rounded-lg w-80 h-64 object-cover transform group-hover:scale-105 transition duration-300"
+                              className="p-8 rounded-lg w-full h-full object-cover transform group-hover:scale-105 transition duration-300"
                               src={product.image}
                               alt={product.name}
                             />
@@ -208,30 +207,30 @@ const TrendingProducts = ({
                                 {/* Quantity */}
                                 <h2 className="py-2">Quantity</h2>
                                 <div className="flex justify-between">
-                                <div className="flex items-center space-x-4 mb-4">
-                                  <button
-                                    onClick={handleDecrease}
-                                    className="px-3 py-1 border rounded hover:bg-gray-100"
-                                  >
-                                    -
-                                  </button>
-                                  <span className="text-lg font-medium">
-                                    {quantity}
-                                  </span>
-                                  <button
-                                    onClick={handleIncrease}
-                                    className="px-3 py-1 border rounded hover:bg-gray-100"
-                                  >
-                                    +
-                                  </button>
-                                </div>
+                                  <div className="flex items-center space-x-4 mb-4">
+                                    <button
+                                      onClick={handleDecrease}
+                                      className="px-3 py-1 border rounded hover:bg-gray-100"
+                                    >
+                                      -
+                                    </button>
+                                    <span className="text-lg font-medium">
+                                      {quantity}
+                                    </span>
+                                    <button
+                                      onClick={handleIncrease}
+                                      className="px-3 py-1 border rounded hover:bg-gray-100"
+                                    >
+                                      +
+                                    </button>
+                                  </div>
 
-                                {/* Add to Cart */}
-                                <div className="flex items-center space-x-2 mb-4">
-                                  <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
-                                    Add To Cart
-                                  </button>
-                                </div>
+                                  {/* Add to Cart */}
+                                  <div className="flex items-center space-x-2 mb-4">
+                                    <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
+                                      Add To Cart
+                                    </button>
+                                  </div>
                                 </div>
 
                                 {/* Buy Now */}
@@ -240,27 +239,8 @@ const TrendingProducts = ({
                                     Buy Now
                                   </button>
                                 </div>
-
-                                {/* Wishlist and SKU */}
-                                <div className="flex items-center justify-between text-sm mb-4">
-                                  <button className="text-gray-500 hover:text-gray-700 text-lg">
-                                    <span className="mr-1 text-xl">♥</span> Add Wishlist
-                                  </button>
-                                </div>
-
-                                {/* SKU and Category */}
-                                <div className="text-sm">
-                                  <p className="text-gray-500">
-                                    <strong>SKU:</strong> SF-2443-CGOF
-                                  </p>
-                                  <p className="text-gray-500">
-                                    <strong>Category:</strong> Laptop
-                                  </p>
-                                </div>
                               </div>
                             </div>
-
-                            
                           </div>
                         </div>
                       </div>
