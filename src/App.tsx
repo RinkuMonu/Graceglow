@@ -37,8 +37,10 @@ function App() {
         name: product.name,
         price: product.price,
         image: product.image,
-      })
+      }),
+      
     );
+    toggleCart()
   };
   const ScrollToTop = () => {
     const location = useLocation();
@@ -60,7 +62,7 @@ function App() {
           <Routes>
             {/* royruhdfhdhf */}
             {/* <Route path="/" element={<Home addToCart={handleAddToCart} />} /> */}
-            <Route path="/" element={<Home addToCart={handleAddToCart} />} />
+            <Route path="/" element={<Home addToCart={handleAddToCart} onCartClick={toggleCart} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/category/:category" element={<CategoryPage />} />
             <Route path="/product/:id" element={<ProductDetails addToCart={handleAddToCart} />} />

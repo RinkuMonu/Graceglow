@@ -7,9 +7,10 @@ import axios from "axios";
 
 interface HomeProps {
   addToCart: (product: Product) => void;
+  onCartClick: () => void;
 }
 
-export default function Home({ addToCart }: HomeProps) {
+export default function Home({ addToCart, onCartClick }: HomeProps) {
   const [loading2, setLoading2] = useState(false);
 
   const data = {
@@ -38,12 +39,14 @@ export default function Home({ addToCart }: HomeProps) {
   return (
     <>
       <Banner />
-      <TrendingProducts addToCart={addToCart} /> {/* Pass addToCart here */}
+      <TrendingProducts addToCart={addToCart}  /> {/* Pass addToCart here */}
       <TopCategories />
       <Newsletter />
+
       {/* <div>
         <button onClick={handlePayment}>pay now</button>
       </div> */}
+
     </>
   );
 }
