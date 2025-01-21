@@ -3,7 +3,8 @@ import { Search, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import img1 from "../../assest/4.png";
 import Dropdown from "../../pages/Dropdown";
-
+import { FaBagShopping } from "react-icons/fa6";
+import { IoHeartOutline } from "react-icons/io5";
 interface NavbarProps {
   onCartClick: () => void;
   cartItemCount: number;
@@ -249,10 +250,13 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                 >
                   <Search />
                 </button>
+
               </div>
             </form>
           </div>
         )}
+
+
 
         {/* Mobile Navigation */}
         {menuOpen && (
