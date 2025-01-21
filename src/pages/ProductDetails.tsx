@@ -288,7 +288,7 @@ const ProductDetails = ({ addToCart }: ProductDetailsProps) => {
         <h3 className="text-4xl font-bold flex items-center justify-center py-6">
           Related Products
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:px-10">
           {products.slice(0, 4).map((product) => (
             <div
               key={product.id}
