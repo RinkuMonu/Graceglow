@@ -5,10 +5,12 @@ import sl3 from "../../assest/sl-3.png";
 
 const TrendingProducts = ({
   addToCart,
+ 
 }: {
   addToCart: (product: any) => void;
+
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);// State to track modal visibility
 
   // Function to open the modal
   const openModal = () => {
@@ -51,7 +53,8 @@ const TrendingProducts = ({
                 <div className="absolute left-5 top-[57px] opacity-0 invisible group-hover:opacity-100 group-hover:visible z-10  transition-opacity duration-300">
                   <div className="flex flex-col">
                     {/* Action buttons */}
-                    <button
+                    <button onClick={()=> addToCart(product)}
+                    
                       type="button"
                       className="relative flex items-center justify-center bg-white text-black rounded-full shadow-sm text-xl h-[42px] w-[42px] mb-1.5 cursor-pointer hover:text-white hover:bg-black group"
                     >
