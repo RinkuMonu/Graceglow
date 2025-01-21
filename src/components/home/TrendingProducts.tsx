@@ -26,8 +26,8 @@ const TrendingProducts = ({
     if (quantity > 1) setQuantity((prev) => prev - 1);
   };
   return (
-    <section className="p-16 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-white">
+      <div className="container  sm:px-4">
         <h2 className="text-4xl font-bold mb-8">
           <span className="text-[#5252a2]">Trending</span> Products
         </h2>
