@@ -42,9 +42,11 @@ export default function Home({ addToCart, onCartClick }: HomeProps) {
       <TrendingProducts addToCart={addToCart}  /> {/* Pass addToCart here */}
       <TopCategories />
       <Newsletter />
-      <div>
-        <button onClick={handlePayment} >pay now</button>
-      </div>
+
+      {/* <div>
+        <button onClick={handlePayment}>pay now</button>
+      </div> */}
+
     </>
   );
 }
