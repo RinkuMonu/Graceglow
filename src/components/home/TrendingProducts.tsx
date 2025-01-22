@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { products } from "../../data/products"; // Import shared products data
+import { Link } from "react-router-dom";
 
 const TrendingProducts = ({
   addToCart,
@@ -229,7 +230,7 @@ const TrendingProducts = ({
                                   </div>
 
                                   {/* Add to Cart */}
-                                  <div className="flex items-center space-x-2 mb-4">
+                                  <div className="flex items-center space-x-2 mb-4" onClick={()=> addToCart(product)}>
                                     <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
                                       Add To Cart
                                     </button>
@@ -238,9 +239,11 @@ const TrendingProducts = ({
 
                                 {/* Buy Now */}
                                 <div className="mb-4">
+                                   <Link to="/address">
                                   <button className="w-full px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
                                     Buy Now
                                   </button>
+                                  </Link>
                                 </div>
                               </div>
                             </div>

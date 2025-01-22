@@ -1,14 +1,5 @@
 export const products = [
-  {
-    id: 1,
-    name: 'MacBook Pro M2',
-    price: 179000,
-    rating: 4.9,
-    image: 'https://www.lydogbillede.dk/wp-content/uploads/2023/11/hero_intro_endframe__e6khcva4hkeq_large.jpg',
-    category: 'Laptops',
-    brand: 'Apple',
-    date: '2024-03-01'
-  },
+
   {
     id: 2,
     name: 'iPhone 15 Pro',
