@@ -336,13 +336,25 @@ const TrendingProducts = ({
                     {product.rating}
                   </span>
                 </div>
+
+                <p className="text-gray-600">{product.category}</p>
+                <p className="text-xl font-bold">₹{product.price}</p>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
+                >
+                  Add to Cart
+                </button>
+              </div> 
+
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold text-gray-900">
                     ₹{product.price}
                   </span>
                 </div>
               </div>
-            </div>
+              
+            
           ))}
         </div>
       </div>
