@@ -18,9 +18,16 @@ import { Product } from './types'; // Import Product interface
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
 import { addItemToCart } from './reduxslice/CartSlice';
+import Orders from './pages/orders';
+import ShoppingCart from './pages/Cart';
 // import {Phonepay} from './components/Phonepay/Phonepay';
 
 function App() {
+   const location = useLocation();
+  
+    // Pages where Navbar and Footer should not be displayed
+    const hideNavbarFooter = ["/address", "/test"];
+    const shouldHide = hideNavbarFooter.includes(location.pathname);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.items); // Get cart items from Redux store
 
@@ -53,9 +60,10 @@ function App() {
   };
 
   return (
-    <Router>
+    
       <div className="min-h-screen flex flex-col">
-        <Navbar onCartClick={toggleCart} cartItemCount={cartItems.length} />
+         {!shouldHide && 
+        <Navbar onCartClick={toggleCart} cartItemCount={cartItems.length} />}
         <ScrollToTop /> 
         <main className="flex-grow">
         
@@ -75,14 +83,16 @@ function App() {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/Privacy" element={<Privacy />} />
             <Route path="/address" element={<ShippingAddress  cartItems={cartItems} onClose={toggleCart}/>} />
+            <Route path='/orders' element={<Orders />} />
+            <Route path='/cart' element={<ShoppingCart/>} />
             {/* <Route path="/phonepay" element={<Phonepay/>} />  */}
 
           </Routes>
         </main>
         <Cart isOpen={isCartOpen} onClose={toggleCart} cartItems={cartItems} />
-        <Footer />
+        {!shouldHide && <Footer />}
       </div>
-    </Router>
+    
   );
 }
 

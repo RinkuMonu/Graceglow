@@ -11,42 +11,37 @@ interface HomeProps {
 }
 
 export default function Home({ addToCart, onCartClick }: HomeProps) {
-  const [loading2, setLoading2] = useState(false);
+  // const [loading2, setLoading2] = useState(false);
 
-  const data = {
-    name: "Waleed",
-    amount: 1,
-    number: "7498608775",
-    MUID: "MUID" + Date.now(),
-    transactionId: "T" + Date.now(),
-  };
+  // const data = {
+  //   name: "Waleed",
+  //   amount: 1,
+  //   number: "7498608775",
+  //   MUID: "MUID" + Date.now(),
+  //   transactionId: "T" + Date.now(),
+  // };
 
-  const handlePayment = (e) => {
-    e.preventDefault();
-    setLoading2(true);
-    axios
-      .post("https://sevenunique-backend.onrender.com/api/v1/payment/payment", { ...data })
-      .then((res) => {
-        setTimeout(() => {
-          setLoading2(false);
-        }, 1500);
-      })
-      .catch((error) => {
-        setLoading2(false);
-        console.error(error);
-      });
-  };
+  // const handlePayment = (e) => {
+  //   e.preventDefault();
+  //   setLoading2(true);
+  //   axios
+  //     .post("https://sevenunique-backend.onrender.com/api/v1/payment/payment", { ...data })
+  //     .then((res) => {
+  //       setTimeout(() => {
+  //         setLoading2(false);
+  //       }, 1500);
+  //     })
+  //     .catch((error) => {
+  //       setLoading2(false);
+  //       console.error(error);
+  //     });
+  // };
   return (
     <>
       <Banner />
-      <TrendingProducts addToCart={addToCart}  /> {/* Pass addToCart here */}
+      <TrendingProducts addToCart={addToCart} /> {/* Pass addToCart here */}
       <TopCategories />
       <Newsletter />
-
-      {/* <div>
-        <button onClick={handlePayment}>pay now</button>
-      </div> */}
-
     </>
   );
 }

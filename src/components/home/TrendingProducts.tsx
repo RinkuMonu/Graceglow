@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { products } from "../../data/products"; // Import shared products data
 import { Link } from "react-router-dom";
@@ -11,6 +11,19 @@ const TrendingProducts = ({
 
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);// State to track modal visibility
+
+  useEffect(() => {
+    // Lock scroll on the background when modal is open
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup on unmount
+    };
+  }, [isModalOpen]);
 
   // Function to open the modal
   const openModal = () => {

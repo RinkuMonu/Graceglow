@@ -22,7 +22,7 @@ const Banner: React.FC = () => {
         }}
         navigation={true}
         autoplay={{
-          delay: 10000, // Adjusted autoplay delay for better pace
+          delay: 3000, // Adjusted autoplay delay for better pace
           disableOnInteraction: false,
         }}
         modules={[Pagination, Navigation, Autoplay]}
