@@ -3,8 +3,7 @@ import { Search, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import img1 from "../../assest/4.png";
 import Dropdown from "../../pages/Dropdown";
-import { FaBagShopping } from "react-icons/fa6";
-import { IoHeartOutline } from "react-icons/io5";
+
 interface NavbarProps {
   onCartClick: () => void;
   cartItemCount: number;
@@ -62,6 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
     "Electronics",
     "Accessories",
   ];
+  console.log("userdataaaaaaaaa", user);
 
   return (
     <div>
@@ -116,7 +116,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
               {/* Actions */}
               <div className="flex items-center">
                 <div className="flex items-center justify-between p-4  border-gray-300 gap-1 sm:gap-4 md:gap-20">
-                  <div>
+                  <div className="relative group">
                     {/* User Info */}
                     <Link
                       to={user ? "/profile" : "/login"}
@@ -141,13 +141,25 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                       </span>
                     </Link>
                     {user && (
-                      <button
-                        onClick={handleLogout}
-                        className="hover:text-red-600 hidden sm:block"
-                      >
-                        Logout
-                      </button>
-                    )}
+    <div className="absolute hidden group-hover:block bg-white shadow-md rounded-lg  p-2 z-10">
+      <ul className="text-gray-700">
+        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+          Your Orders
+        </li>
+        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+          Profile
+        </li>
+        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+          <button
+            onClick={handleLogout}
+            className="hover:text-red-600 text-left w-full"
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  )}
                   </div>
                   {/* Wishlist and Cart */}
                   <div className="flex items-center sm:gap-6">
@@ -250,13 +262,10 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                 >
                   <Search />
                 </button>
-
               </div>
             </form>
           </div>
         )}
-
-
 
         {/* Mobile Navigation */}
         {menuOpen && (
