@@ -12,11 +12,11 @@ export default function ProductCard({ product, addToCart }: ProductCardProps) {
   return (
     <Link to={`/product/${product.id}`} className="group">
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="relative aspect-square">
+        <div className="relative overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transform group-hover:scale-105 transition duration-300"
+            className="p-8 rounded-lg w-96 h-64 object-contain transform  transition duration-300"
           />
         </div>
         <div className="p-4 space-y-2">

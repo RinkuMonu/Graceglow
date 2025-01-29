@@ -56,7 +56,7 @@ const TrendingProducts = ({
             >
               <div className="relative overflow-hidden">
                 <img
-                  className="p-8 rounded-lg w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"
+                  className="p-8 rounded-lg w-96 h-64 object-cover transform group-hover:scale-105 transition duration-300"
                   src={product.image}
                   alt={product.name}
                 />

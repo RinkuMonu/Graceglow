@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { State, City } from "country-state-city";
 import { ChevronLeft, Wallet, Check } from "lucide-react";
 import logo from "../assest/4.png";
 interface Address {
@@ -77,7 +78,6 @@ const coupons: CouponCode[] = [
 ];
 
 function AddressShiping() {
-  
   const [isNewAddress, setIsNewAddress] = useState(false); // State for new address form visibility
 
   const handleAddressChange = (e) => {
@@ -89,6 +89,13 @@ function AddressShiping() {
   const [selectedShipping, setSelectedShipping] = useState<string>("1");
   const [selectedPayment, setSelectedPayment] = useState<string>("phonepe");
   const [showCouponInput, setShowCouponInput] = useState(false);
+
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
+  const states = State.getStatesOfCountry("IN"); // Replace "US" with your country code
+  const cities = selectedState
+    ? City.getCitiesOfState("IN", selectedState.isoCode)
+    : [];
 
   const subtotal = orderItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -116,157 +123,182 @@ function AddressShiping() {
                 </h3>
                 <div className="space-y-4">
                   {/* Address Selection Field */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Select Available Address
-        </label>
-        <select
-          className="w-full mb-5 rounded-md shadow-sm py-3 px-4 border border-green-600 focus:outline-green-600"
-          value={selectedAddress}
-          onChange={handleAddressChange}
-        >
-          <option value="new">Add new address...</option>
-          {addresses.map((addr) => (
-            <option key={addr.id} value={addr.id}>
-              {addr.address}, {addr.city}, {addr.state}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Conditional Form Fields */}
-      {isNewAddress ? (
-        <div className="space-y-4">
-          <div className="relative">
-            <input
-              type="text"
-              id="full_name"
-              className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-              placeholder=" "
-            />
-            <Check className="text-green-600 absolute top-2 right-2" />
-            <label
-              htmlFor="full_name"
-              className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-            >
-              Full Name
-            </label>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-[57.5%_40%] gap-4">
-            <div className="relative">
-              <input
-                type="text"
-                id="email"
-                className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-                placeholder=" "
-              />
-              <Check className="text-green-600 absolute top-2 right-2" />
-              <label
-                htmlFor="email"
-                className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-              >
-                Email
-              </label>
-            </div>
-            <div className="relative">
-              <input
-                type="text"
-                id="phone"
-                className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-                placeholder=" "
-              />
-              <Check className="text-green-600 absolute top-2 right-2" />
-              <label
-                htmlFor="phone"
-                className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-              >
-                Phone
-              </label>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative">
-              <label
-                htmlFor="state"
-                className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-              >
-                State
-              </label>
-              <select
-                id="state"
-                className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-              >
-                <option value="">Select state...</option>
-                <option value="AP">Andhra Pradesh</option>
-                <option value="AR">Arunachal Pradesh</option>
-              </select>
-            </div>
-            <div className="relative">
-              <label
-                htmlFor="city"
-                className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-              >
-                City
-              </label>
-              <select
-                id="city"
-                className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-              >
-                <option value="">Select city...</option>
-                <option value="agra">Agra</option>
-                <option value="jaipur">Jaipur</option>
-              </select>
-            </div>
-          </div>
-          <div className="relative">
-            <input
-              type="text"
-              id="address"
-              className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
-              placeholder=" "
-            />
-            <Check className="text-green-600 absolute top-2 right-2" />
-            <label
-              htmlFor="address"
-              className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
-            >
-              Address
-            </label>
-          </div>
-        </div>
-      ) : (
-        <div>
-          {addresses
-            .filter((addr) => addr.id === selectedAddress)
-            .map((address) => (
-              <div
-                key={address.id}
-                className="border border-dashed border-gray-300 rounded-lg p-4 sm:p-6 flex justify-between items-start"
-              >
-                {/* Left Section */}
-                <div>
-                  <h2 className="font-bold text-lg">{address.name}</h2>
-                  <p className="text-gray-700 mt-1">{address.address}</p>
-                  <p className="text-gray-700 mt-2">
-                    <span className="font-semibold">Phone:</span> {address.phone}
-                  </p>
-                  <p className="text-gray-700 mt-2">
-                    <span className="font-semibold">Email:</span> {address.email}
-                  </p>
-                </div>
-
-                {/* Right Section */}
-                <div className="text-sm text-[#5252a2] font-medium">Default</div>
-              </div>
-            ))}
-        </div>
-      )}
-
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Select Available Address
+                    </label>
+                    <select
+                      className="w-full mb-5 rounded-md shadow-sm py-3 px-4 border border-green-600 focus:outline-green-600"
+                      value={selectedAddress}
+                      onChange={handleAddressChange}
+                    >
+                      <option value="new">Add new address...</option>
+                      {addresses.map((addr) => (
+                        <option key={addr.id} value={addr.id}>
+                          {addr.address}, {addr.city}, {addr.state}
+                        </option>
+                      ))}
+                    </select>
                   </div>
+
+                  {/* Conditional Form Fields */}
+                  {isNewAddress ? (
+                    <div className="space-y-4">
+                      <div className="relative">
+                        <input
+                          type="text"
+                          id="full_name"
+                          className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                          placeholder=" "
+                        />
+                        <Check className="text-green-600 absolute top-2 right-2" />
+                        <label
+                          htmlFor="full_name"
+                          className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                        >
+                          Full Name
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-[57.5%_40%] gap-4">
+                        <div className="relative">
+                          <input
+                            type="text"
+                            id="email"
+                            className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            placeholder=" "
+                          />
+                          <Check className="text-green-600 absolute top-2 right-2" />
+                          <label
+                            htmlFor="email"
+                            className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                          >
+                            Email
+                          </label>
+                        </div>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            id="phone"
+                            className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            placeholder=" "
+                          />
+                          <Check className="text-green-600 absolute top-2 right-2" />
+                          <label
+                            htmlFor="phone"
+                            className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                          >
+                            Phone
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="relative">
+                          <label
+                            htmlFor="state"
+                            className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                          >
+                            State
+                          </label>
+                          <select
+                            className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            onChange={(e) =>
+                              setSelectedState(
+                                states.find(
+                                  (state) => state.isoCode === e.target.value
+                                )
+                              )
+                            }
+                          >
+                            <option value="">Select State</option>
+                            {states.map((state) => (
+                              <option key={state.isoCode} value={state.isoCode}>
+                                {state.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="relative">
+                          <label
+                            htmlFor="city"
+                            className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                          >
+                            City
+                          </label>
+
+                          <select
+                            className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            onChange={(e) =>
+                              setSelectedCity(
+                                cities.find(
+                                  (city) => city.name === e.target.value
+                                )
+                              )
+                            }
+                          >
+                            <option value="">Select City</option>
+                            {cities.map((city) => (
+                              <option key={city.name} value={city.name}>
+                                {city.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          id="address"
+                          className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                          placeholder=" "
+                        />
+                        <Check className="text-green-600 absolute top-2 right-2" />
+                        <label
+                          htmlFor="address"
+                          className="absolute px-2 text-base text-gray-700 duration-300 transform -translate-y-4 scale-75 top-1 z-10 origin-[0] bg-white start-3"
+                        >
+                          Address
+                        </label>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      {addresses
+                        .filter((addr) => addr.id === selectedAddress)
+                        .map((address) => (
+                          <div
+                            key={address.id}
+                            className="border border-dashed border-gray-300 rounded-lg p-4 sm:p-6 flex justify-between items-start"
+                          >
+                            {/* Left Section */}
+                            <div>
+                              <h2 className="font-bold text-lg">
+                                {address.name}
+                              </h2>
+                              <p className="text-gray-700 mt-1">
+                                {address.address}
+                              </p>
+                              <p className="text-gray-700 mt-2">
+                                <span className="font-semibold">Phone:</span>{" "}
+                                {address.phone}
+                              </p>
+                              <p className="text-gray-700 mt-2">
+                                <span className="font-semibold">Email:</span>{" "}
+                                {address.email}
+                              </p>
+                            </div>
+
+                            {/* Right Section */}
+                            <div className="text-sm text-[#5252a2] font-medium">
+                              Default
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 </div>
-              
+              </div>
 
               {/* Shipping Method */}
               <div className="mb-8">
@@ -353,9 +385,8 @@ function AddressShiping() {
                 />
               </div>
 
-                  {/* Action Buttons */}
+              {/* Action Buttons */}
               <div className="mt-6 space-y-3 flex justify-between">
-                
                 <a
                   href="/cart"
                   className="flex items-center justify-center gap-2 text-[#5252a2] hover:text-blue-700"
@@ -367,7 +398,6 @@ function AddressShiping() {
                   Place Order
                 </button>
               </div>
-
             </div>
           </div>
 
@@ -396,7 +426,7 @@ function AddressShiping() {
                 ))}
               </div>
 
-                {/* Price Summary */}
+              {/* Price Summary */}
               <div className="border-t pt-4 space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
@@ -462,10 +492,6 @@ function AddressShiping() {
                   </div>
                 )}
               </div>
-
-              
-
-              
             </div>
           </div>
         </div>
