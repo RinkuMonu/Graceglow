@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { State, City } from "country-state-city";
 import { ChevronLeft, Wallet, Check } from "lucide-react";
 import logo from "../assest/4.png";
 import { Link } from "react-router-dom";
@@ -91,11 +92,19 @@ function AddressShiping({ cartItems }) {
   const [selectedPayment, setSelectedPayment] = useState<string>("phonepe");
   const [showCouponInput, setShowCouponInput] = useState(false);
 
+
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-// const totalitemvalue = 
+
+  const [selectedState, setSelectedState] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
+  const states = State.getStatesOfCountry("IN"); // Replace "US" with your country code
+  const cities = selectedState
+    ? City.getCitiesOfState("IN", selectedState.isoCode)
+    : [];
+ 
 
   const shipping =
     shippingMethods.find((m) => m.id === selectedShipping)?.price || 0;
@@ -198,12 +207,21 @@ function AddressShiping({ cartItems }) {
                             State
                           </label>
                           <select
-                            id="state"
                             className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            onChange={(e) =>
+                              setSelectedState(
+                                states.find(
+                                  (state) => state.isoCode === e.target.value
+                                )
+                              )
+                            }
                           >
-                            <option value="">Select state...</option>
-                            <option value="AP">Andhra Pradesh</option>
-                            <option value="AR">Arunachal Pradesh</option>
+                            <option value="">Select State</option>
+                            {states.map((state) => (
+                              <option key={state.isoCode} value={state.isoCode}>
+                                {state.name}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         <div className="relative">
@@ -213,13 +231,23 @@ function AddressShiping({ cartItems }) {
                           >
                             City
                           </label>
+
                           <select
-                            id="city"
                             className="block px-2.5 py-3 w-full text-sm rounded-lg border border-green-600 focus:outline-green-600"
+                            onChange={(e) =>
+                              setSelectedCity(
+                                cities.find(
+                                  (city) => city.name === e.target.value
+                                )
+                              )
+                            }
                           >
-                            <option value="">Select city...</option>
-                            <option value="agra">Agra</option>
-                            <option value="jaipur">Jaipur</option>
+                            <option value="">Select City</option>
+                            {cities.map((city) => (
+                              <option key={city.name} value={city.name}>
+                                {city.name}
+                              </option>
+                            ))}
                           </select>
                         </div>
                       </div>
