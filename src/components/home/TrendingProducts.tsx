@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { products } from "../../data/products"; // Import shared products data
+import { Link } from "react-router-dom";
 
 const TrendingProducts = ({
   addToCart,
@@ -242,7 +243,7 @@ const TrendingProducts = ({
                                   </div>
 
                                   {/* Add to Cart */}
-                                  <div className="flex items-center space-x-2 mb-4">
+                                  <div className="flex items-center space-x-2 mb-4" onClick={()=> addToCart(product)}>
                                     <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
                                       Add To Cart
                                     </button>
@@ -251,9 +252,11 @@ const TrendingProducts = ({
 
                                 {/* Buy Now */}
                                 <div className="mb-4">
+                                   <Link to="/address">
                                   <button className="w-full px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
                                     Buy Now
                                   </button>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
@@ -333,13 +336,25 @@ const TrendingProducts = ({
                     {product.rating}
                   </span>
                 </div>
+
+                <p className="text-gray-600">{product.category}</p>
+                <p className="text-xl font-bold">₹{product.price}</p>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
+                >
+                  Add to Cart
+                </button>
+              </div> 
+
                 <div className="flex items-center justify-between">
                   <span className="text-xl font-bold text-gray-900">
                     ₹{product.price}
                   </span>
                 </div>
               </div>
-            </div>
+              
+            
           ))}
         </div>
       </div>
