@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
 import { addItemToCart } from './reduxslice/CartSlice';
 import Orders from './pages/orders';
-import ShoppingCart from './pages/Cart';
+import ShoppingCart from './pages/BackCart';
 // import {Phonepay} from './components/Phonepay/Phonepay';
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
             <Route path="/Privacy" element={<Privacy />} />
             <Route path="/address" element={<ShippingAddress  cartItems={cartItems} onClose={toggleCart}/>} />
             <Route path='/orders' element={<Orders />} />
-            <Route path='/cart' element={<ShoppingCart/>} />
+            <Route path='/cart' element={<ShoppingCart cartItems={cartItems}/> } />
             {/* <Route path="/phonepay" element={<Phonepay/>} />  */}
 
           </Routes>

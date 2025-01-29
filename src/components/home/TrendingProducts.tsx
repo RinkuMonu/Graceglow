@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 
 const TrendingProducts = ({
   addToCart,
- 
 }: {
   addToCart: (product: any) => void;
-
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);// State to track modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
 
   useEffect(() => {
     // Lock scroll on the background when modal is open
@@ -66,8 +64,8 @@ const TrendingProducts = ({
                 <div className="absolute left-5 top-[57px] opacity-0 invisible group-hover:opacity-100 group-hover:visible  transition-opacity duration-300">
                   <div className="flex flex-col">
                     {/* Action buttons */}
-                    <button onClick={()=> addToCart(product)}
-                    
+                    <button
+                      onClick={() => addToCart(product)}
                       type="button"
                       className="relative flex items-center justify-center bg-white text-black rounded-full shadow-sm text-xl h-[42px] w-[42px] mb-1.5 cursor-pointer hover:text-white hover:bg-black group"
                     >
@@ -243,7 +241,10 @@ const TrendingProducts = ({
                                   </div>
 
                                   {/* Add to Cart */}
-                                  <div className="flex items-center space-x-2 mb-4" onClick={()=> addToCart(product)}>
+                                  <div
+                                    className="flex items-center space-x-2 mb-4"
+                                    onClick={() => addToCart(product)}
+                                  >
                                     <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
                                       Add To Cart
                                     </button>
@@ -252,10 +253,10 @@ const TrendingProducts = ({
 
                                 {/* Buy Now */}
                                 <div className="mb-4">
-                                   <Link to="/address">
-                                  <button className="w-full px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
-                                    Buy Now
-                                  </button>
+                                  <Link to="/address">
+                                    <button className="w-full px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+                                      Buy Now
+                                    </button>
                                   </Link>
                                 </div>
                               </div>
@@ -339,22 +340,8 @@ const TrendingProducts = ({
 
                 <p className="text-gray-600">{product.category}</p>
                 <p className="text-xl font-bold">₹{product.price}</p>
-                <button
-                  onClick={() => addToCart(product)}
-                  className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
-                >
-                  Add to Cart
-                </button>
-              </div> 
-
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-gray-900">
-                    ₹{product.price}
-                  </span>
-                </div>
               </div>
-              
-            
+            </div>
           ))}
         </div>
       </div>

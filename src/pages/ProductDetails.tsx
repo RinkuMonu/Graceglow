@@ -166,7 +166,7 @@ const ProductDetails = ({ addToCart }: ProductDetailsProps) => {
                 </div>
 
                 {/* Add to Cart */}
-                <div className="flex items-center space-x-2 mb-4">
+                <div className="flex items-center space-x-2 mb-4"  onClick={() => addToCart(product)}>
                   <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
                     Add To Cart
                   </button>
@@ -482,8 +482,10 @@ const ProductDetails = ({ addToCart }: ProductDetailsProps) => {
                                   </div>
 
                                   {/* Add to Cart */}
-                                  <div className="flex items-center space-x-2 mb-4">
-                                    <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100">
+                                  <div className="flex items-center space-x-2 mb-4"  onClick={() => addToCart(product)}>
+                                    <button className="flex-1 px-16 py-2 border rounded bg-white hover:bg-gray-100"
+                                   
+                                    >
                                       Add To Cart
                                     </button>
                                   </div>
