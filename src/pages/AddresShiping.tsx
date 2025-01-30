@@ -126,7 +126,7 @@ const handlePayment = (e) => {
         .post('https://digihub-backend.onrender.com/payment/add', { ...data })
         .then((res) => {
             // Log the response for debugging
-            console.log("Payment Response:", res.data);
+            console.log("Payment Responseeee:", res.data);
 
             // Check if redirectUrl is present in the response
             if (res.data.data?.instrumentResponse?.redirectInfo?.url) {
