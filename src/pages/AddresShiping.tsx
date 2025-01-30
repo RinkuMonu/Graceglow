@@ -3,6 +3,7 @@ import { State, City } from "country-state-city";
 import { ChevronLeft, Wallet, Check } from "lucide-react";
 import logo from "../assest/4.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 interface Address {
   id: string;
   name: string;
@@ -109,6 +110,29 @@ function AddressShiping({ cartItems }) {
   const shipping =
     shippingMethods.find((m) => m.id === selectedShipping)?.price || 0;
   const total = subtotal + shipping;
+
+  const data ={
+    name: "Dinesh",
+    amount: total,
+    number: '7498608775',
+    MUID: "MUID" + Date.now(),
+    transactionId: 'T' + Date.now(),
+}
+
+const handlePayment = (e)=>{
+    e.preventDefault();
+    
+    axios.post('https://digihub-backend.onrender.com/payment/add', {...data}).then(res => {  
+    setTimeout(() => {
+       console.log(res);
+       
+    }, 1500);
+    })
+    .catch(error => {
+       
+        console.error(error);
+    });   
+}
 
   return (
     <div className=" min-h-screen bg-gray-50">
@@ -399,7 +423,7 @@ function AddressShiping({ cartItems }) {
                   <ChevronLeft className="w-5 h-5" />
                   Back to Cart
                 </Link>
-                <button className=" bg-[#434389] text-white py-3 px-4 rounded-lg hover:bg-[#5252a2] font-medium">
+                <button className=" bg-[#434389] text-white py-3 px-4 rounded-lg hover:bg-[#5252a2] font-medium" onClick={handlePayment}>
                   Place Order
                 </button>
               </div>
@@ -443,7 +467,7 @@ function AddressShiping({ cartItems }) {
                 </div>
                 <div className="flex justify-between font-medium text-lg py-2 border-b">
                   <span>Total</span>
-                  <span>₹{total.toLocaleString()}</span>
+                  <span>₹{total}</span>
                 </div>
               </div>
 
