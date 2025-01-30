@@ -119,20 +119,30 @@ function AddressShiping({ cartItems }) {
     transactionId: 'T' + Date.now(),
 }
 
-const handlePayment = (e)=>{
+const handlePayment = (e) => {
     e.preventDefault();
-    
-    axios.post('https://digihub-backend.onrender.com/payment/add', {...data}).then(res => {  
-    setTimeout(() => {
-       console.log(res);
-       
-    }, 1500);
-    })
-    .catch(error => {
-       
-        console.error(error);
-    });   
-}
+
+    axios
+        .post('https://digihub-backend.onrender.com/payment/add', { ...data })
+        .then((res) => {
+            // Log the response for debugging
+            console.log("Payment Response:", res.data);
+
+            // Check if redirectUrl is present in the response
+            if (res.data.data?.instrumentResponse?.redirectInfo?.url) {
+                const redirectUrl = res.data.data.instrumentResponse.redirectInfo.url;
+
+                // Redirect the user to PhonePe payment page
+                window.location.href = redirectUrl;
+            } else {
+                console.error("Redirect URL missing in the response");
+            }
+        })
+        .catch((error) => {
+            console.error("Payment Error:", error);
+        });
+};
+
 
   return (
     <div className=" min-h-screen bg-gray-50">
