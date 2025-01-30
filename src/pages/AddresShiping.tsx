@@ -129,7 +129,7 @@ const handlePayment = (e) => {
             console.log("Payment Responseeee:", res.data);
 
             // Check if redirectUrl is present in the response
-            if (res.data.data?.instrumentResponse?.redirectInfo?.url) {
+            if (res.data) {
                 const redirectUrl = res.data;
 
                 // Redirect the user to PhonePe payment page
