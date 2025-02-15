@@ -79,7 +79,7 @@ export default function Login() {
       <div className="max-w-lg w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div className="flex gap-4">
           <div className="pt-4">
-            {isLogin?  <Lock className=" pl-3 h-10 w-8 text-purple-400 pointer-events-none" /> : <User className=" pl-3 h-10 w-10 text-purple-400 pointer-events-none" />}
+            {isLogin?  <Lock className=" pl-3 h-10 w-8 text-[#468125] pointer-events-none" /> : <User className=" pl-3 h-10 w-10 text-[#468125] pointer-events-none" />}
            
           </div>
           <div>
@@ -213,7 +213,7 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-md text-white bg-[#468125] hover:bg-[#569e2d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             {isLogin ? "Sign In" : "Sign Up"}
           </button>

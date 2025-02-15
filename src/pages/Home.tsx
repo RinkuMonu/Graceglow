@@ -4,6 +4,8 @@ import TrendingProducts from "../components/home/TrendingProducts";
 import TopCategories from "../components/home/TopCategories";
 import Newsletter from "../components/home/Newsletter";
 import axios from "axios";
+import ProductCard from "../components/products/ProductCard";
+import ProductCarousel from "../components/home/ProductCard";
 
 interface HomeProps {
   addToCart: (product: Product) => void;
@@ -40,8 +42,10 @@ export default function Home({ addToCart, onCartClick }: HomeProps) {
     <>
       <Banner />
       <TrendingProducts addToCart={addToCart} /> {/* Pass addToCart here */}
-      <TopCategories />
-      <Newsletter />
+      {/* <TopCategories /> */}
+      <ProductCarousel/>
+      {/* <Newsletter /> */}
+
     </>
   );
 }

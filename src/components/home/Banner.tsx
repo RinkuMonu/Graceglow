@@ -1,135 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Pagination, Navigation, Autoplay } from "swiper/modules";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
+// import "swiper/css/autoplay";
+// import sl3 from "../../assest/sl-3.png";
+// import sl4 from "../../assest/sl-4.png";
+// import sl5 from "../../assest/sl-5.png";
+// import { MoveRight } from "lucide-react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "swiper/css/autoplay";
-import sl3 from "../../assest/sl-3.png";
-import sl4 from "../../assest/sl-4.png";
-import sl5 from "../../assest/sl-5.png";
-import { MoveRight } from "lucide-react";
+import "swiper/css/pagination";
+import banner1 from "../../assest/banner1.webp"
+import banner2 from "../../assest/banner2.webp"
+import banner3 from "../../assest/banner3.webp"
+import banner4 from "../../assest/banner4.webp"
+import { Link } from "react-router-dom";
 
 const Banner: React.FC = () => {
+  const [showSubMenu, setShowSubMenu] = useState(false);
   return (
-    <div className="bg-gradient-to-r from-[#5252a2] to-[#5252a2]">
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        autoplay={{
-          delay: 3000, // Adjusted autoplay delay for better pace
-          disableOnInteraction: false,
-        }}
-        modules={[Pagination, Navigation, Autoplay]}
-        className="mySwiper w-full bg-gradient-to-r from-[#5252a2] to-[#5252a2]"
-      >
-        
-        <SwiperSlide>
-          <div className="  w-full h-full ">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-full h-full">
-              {/* Left Section */}
-              <div className="flex flex-col justify-center space-y-4  px-8 md:px-12 lg:px-20 text-white">
-              <span className="text-sm text-primary font-medium">Save Big on Top-Selling Gadgets</span>
-              <h3 className="text-4xl lg:text-5xl font-bold  mb-4">Unbeatable Tech Deals</h3>
-                <p className="text-base lg:text-lg leading-relaxed">
-                  Huge discounts on smartphones, laptops, and more. Limited-time
-                  offers—shop now!
-                </p>
-                <div className="w-fit rounded-lg bg-white text-black">
-                  <a
-                    href="/products"
-                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
-                  >
-                    <div>Shop Now</div>
-                     <MoveRight size={20} />
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Section */}
-              <div className="flex justify-center items-center">
-                <img
-                  src={sl3}
-                  alt="slider image"
-                  className="object-cover w-full max-w-md h-auto rounded-lg"
-                />
-              </div>
-            </div>
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-12 gap-4">
+        {/* Sidebar Menu */}
+        <div className="col-span-3 hidden xl:block">
+          <div className="bg-white shadow-md rounded-lg p-4">
+            <ul className="space-y-2">
+              {["Face Mask", "Hair Oil", "Soap", "Gel", "Serum", "Face Wash"].map((name, index) => (
+                <li key={index} className="cursor-pointer hover:text-green-500">
+                  <Link to={`/category/${name.toLowerCase()}`} className="text-gray-700 hover:text-green-500 ">{name}</Link>
+                  <div className="h-[1px] w-64 bg-gray-200"></div>
+                </li>
+              ))}
+              {/* <li
+                className="relative"
+                onMouseEnter={() => setShowSubMenu(true)}
+                onMouseLeave={() => setShowSubMenu(false)}
+              >
+                <a className="text-gray-700 hover:text-green-500">Creams</a>
+                {showSubMenu && (
+                  <ul className="absolute left-full top-0 bg-white shadow-md rounded-lg p-2">
+                    {["Moisturizing Cream", "Fairness Cream"].map((name, index) => (
+                      <li key={index}>
+                        <a className="block text-gray-700 hover:text-green-500">{name}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li> */}
+              <li className="text-center mt-3">
+                <a className="text-green-500 hover:underline">View all</a>
+              </li>
+            </ul>
           </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className=" w-full h-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 w-full h-full">
-              {/* Left Section */}
-              <div className="flex flex-col justify-center space-y-4  px-8 md:px-12 lg:px-20 text-white">
-                <span className="text-sm text-primary font-medium">Fresh Gadgets, Latest Innovations</span>
-                <h3 className="text-4xl lg:text-5xl font-bold  mb-4">New Arrivals: Cutting-Edge Tech</h3>
-                <p className=" text-xl lg:text-2xl leading-relaxed">
-                  Explore the latest in tech— from smartwatches to home automation. Shop new arrivals now!
-                </p>
-                <div className="w-fit rounded-lg bg-white text-black">
-                  <a
-                    href="/products"
-                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
-                  >
-                    <div>Shop Now</div>
-                     <MoveRight size={20} />
+        </div>
+
+        {/* Main Banner */}
+        <div className="col-span-6">
+          <div className="rounded-lg overflow-hidden shadow-md">
+          <Swiper
+       modules={[Pagination, Autoplay]} 
+       loop={true}
+       pagination={{ clickable: true }}
+       autoplay={{ delay: 3000 }}
+       className="w-full"
+    >
+      {[banner1, banner2].map((image, index) => (
+                <SwiperSlide key={index}>
+                  <a  className="block">
+                    <img className="w-full rounded-lg" loading="lazy" alt={`Banner ${index + 1}`} src={image} />
                   </a>
-                </div>
-              </div>
-
-              {/* Right Section */}
-              <div className="flex justify-center items-center">
-                <img
-                  src={sl4}
-                  alt="slider image"
-                  className="object-cover w-full max-w-md h-auto rounded-lg"
-                />
-              </div>
-            </div>
+                </SwiperSlide>
+              ))}
+    </Swiper>
           </div>
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <div className="w-full h-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6  mb-6 w-full h-full">
-              {/* Left Section */}
-              <div className="flex flex-col justify-center space-y-4 px-8 md:px-12 lg:px-20 text-white">
-                <span className="text-sm text-primary font-medium">Trusted by Thousands of Happy Customers</span>
-                <h3 className="text-4xl lg:text-5xl font-bold mb-4">Shop Best-Selling Electronics</h3>
-                <p className=" text-base lg:text-lg leading-relaxed">
-                  Shop our most popular electronics and see why customers love them!
-                </p>
-                <div className="w-fit rounded-lg bg-white text-black">
-                  <a
-                    href="/products"
-                    className=" flex items-center justify-center gap-2 py-3 px-4  text-base font-medium hover:bg-primary-dark transition"
-                  >
-                    <div>Shop Now</div>
-                     <MoveRight size={20} />
-                  </a>
-                </div>
+          <div className="grid grid-cols-2 gap-2 mt-4">
+          {[banner3, banner4].map((image, index) => (
+              <div key={index}>
+                <a className="block">
+                  <img className="rounded-lg w-full" loading="lazy" alt={`Banner ${index + 3}`} src={image} />
+                </a>
               </div>
-
-              {/* Right Section */}
-              <div className="flex justify-center items-center">
-                <img
-                  src={sl5}
-                  alt="slider image"
-                  className="object-cover w-full max-w-md h-auto rounded-lg"
-                />
-              </div>
-            </div>
+            ))}
           </div>
-        </SwiperSlide>
-      </Swiper>
+        </div>
+
+        {/* Right Sidebar */}
+        <div className="col-span-3 hidden sm:block">
+          <a href="https://graceglow.in/product/glow-serum-foundation-30ml-LGhFyE">
+            <img className="rounded-lg w-full shadow-md" alt="" src="https://graceglow.in/storage/app/public/banner/2024-11-19-673c689679606.webp" />
+          </a>
+        </div>
+      </div>
     </div>
   );
+ 
 };
 
 export default Banner;

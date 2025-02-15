@@ -201,12 +201,12 @@ const ShoppingCart: React.FC = ({cartItems}) => {
               <Link to={"/address"}>
               
               
-              <button  className="w-full py-2 bg-gray-800 text-white rounded mb-2">
+              <button  className="w-full py-2 bg-[#55833d] text-white rounded mb-2">
                 Proceed to Checkout
               </button>
               </Link>
               
-              <button className="w-full py-2 text-gray-700 border border-gray-300 rounded">
+              <button className="w-full py-2 text-[#55833d] border border-gray-300 rounded">
                 Continue Shopping
               </button>
             </div>

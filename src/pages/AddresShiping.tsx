@@ -433,7 +433,7 @@ const handlePayment = (e) => {
                   <ChevronLeft className="w-5 h-5" />
                   Back to Cart
                 </Link>
-                <button className=" bg-[#434389] text-white py-3 px-4 rounded-lg hover:bg-[#5252a2] font-medium" onClick={handlePayment}>
+                <button className=" bg-[#55833d] text-white py-3 px-4 rounded-lg hover:bg-[#55833d] font-medium" onClick={handlePayment}>
                   Place Order
                 </button>
               </div>

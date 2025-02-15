@@ -171,7 +171,7 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
             <Link to="/address">
               <button
                 onClick={onClose}
-                className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700"
+                  className="w-full bg-[#55833d] text-white py-2 rounded-lg hover:bg-[#55833d]"
               >
                 Checkout
               </button>

@@ -11,7 +11,34 @@ export default function CategoryPage() {
   const [sortBy, setSortBy] = React.useState('newest');
   const [showFilters, setShowFilters] = React.useState(false);
 
-  const brands = ['Apple', 'Samsung', 'Sony', 'Dell', 'Bose'];
+   const brands = [
+    "Biotique",
+    "Besly",
+    "Amazer Care",
+    "Real Nature",
+    "mamaearth",
+    "The Body Shop",
+    "Wow Skin Science",
+    "Khadi Natural",
+    "Soulflower",
+    "Forest Essentials",
+    "Kaprica",
+    "Tata Organic",
+    "L'Oreal Paris",
+    "Juicy Chemistry",
+    "Earth Rhythm",
+    "SoulTree",
+    "Organic Harvest",
+    "The Tribe Concepts",
+    "Just Herbs",
+    "Minimilist",
+    "plum",
+    "Derma Co",
+    "Mcaffeine",
+    "The Face Shop",
+    "Kama Ayurveda"
+  ];
+  
 
   const filteredProducts = products
     .filter(product => 
@@ -52,23 +79,27 @@ export default function CategoryPage() {
         {/* Filters Sidebar */}
         <div className={`lg:w-64 space-y-6 ₹{showFilters ? 'block' : 'hidden lg:block'}`}>
           {/* Price Range */}
-          <div>
-            <h3 className="font-semibold mb-4">Price Range</h3>
-            <div className="space-y-2">
-              <input
-                type="range"
-                min="0"
-                max="2000"
-                value={priceRange[1]}
-                onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                className="w-full"
-              />
-              <div className="flex justify-between text-sm text-gray-600">
-                <span>₹{priceRange[0]}</span>
-                <span>₹{priceRange[1]}</span>
-              </div>
-            </div>
-          </div>
+          <div className="space-y-2">
+      <input
+        type="range"
+        min="0"
+        max="2000"
+        value={priceRange[1]}
+        onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
+        className="w-full appearance-none bg-transparent
+        [&::-webkit-slider-runnable-track]:bg-green-500 
+        [&::-webkit-slider-runnable-track]:h-2
+        [&::-webkit-slider-thumb]:bg-green-700 
+        [&::-webkit-slider-thumb]:w-5 
+        [&::-webkit-slider-thumb]:h-5 
+        [&::-webkit-slider-thumb]:rounded-full 
+        [&::-webkit-slider-thumb]:-mt-1"
+      />
+      <div className="flex justify-between text-sm text-gray-600">
+        <span>₹{priceRange[0]}</span>
+        <span>₹{priceRange[1]}</span>
+      </div>
+    </div>
 
           {/* Brands */}
           <div>
