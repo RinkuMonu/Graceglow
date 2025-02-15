@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { State, City } from "country-state-city";
 import { ChevronLeft, Wallet, Check } from "lucide-react";
-import logo from "../assest/4.png";
+import logo from "../assest/logo.webp";
 import { Link } from "react-router-dom";
 import axios from "axios";
 interface Address {
