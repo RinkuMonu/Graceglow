@@ -237,7 +237,7 @@ const ProductCarousel: React.FC = () => {
     ];
 
     return (
-        <div className="container ml-10">
+        <div className="container px-4 md:px-10 mx-auto">
             {categories.map((category, catIndex) => (
                 <div key={catIndex} className="mb-8">
                     <div className="border-b pb-3 flex justify-between items-start gap-3 mb-4">
