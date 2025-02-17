@@ -11,18 +11,18 @@ const ProductCarousel: React.FC = () => {
             products: [
                 {
                     id: 1,
-                    name: "Dell XPS 13",
-                    price: 118000,
+                    name: "Biotique face mask", 
+                    price: 240,
                     rating: 4.6,
                     image:
                       "https://www.biotique.com/cdn/shop/products/8904352001932-min.jpg?v=1701854882",
-                    brand: "Dell",
+                    brand: "Biotique",
                     date: "2024-02-28",
                   },
                   {
                     id: 2,
                     name: "Besly Green Tea Mask",
-                    price: 33000,
+                    price: 400,
                     rating: 4.9,
                     image:
                       "https://images-cdn.ubuy.co.in/633aa4bfdf07dc63497f7ad0-bullpiano-green-tea-face-mask-clay.jpg",
@@ -31,8 +31,8 @@ const ProductCarousel: React.FC = () => {
                   },
                   {
                     id: 3,
-                    name: "Brand: Amazer Care",
-                    price: 58000,
+                    name: "Amazer Care",
+                    price: 500,
                     rating: 4.8,
                     image:
                       "https://rukminim2.flixcart.com/image/850/1000/xif0q/face-pack/r/o/w/200-french-green-clay-powder-natural-face-mask-skin-care-powder-original-imagwsrx9xyvjszs.jpeg?q=20&crop=false",
@@ -42,7 +42,7 @@ const ProductCarousel: React.FC = () => {
                   {
                     id: 4,
                     name: "Real Nature Mung Bean Face Mask",
-                    price: 43000,
+                    price: 430,
                     rating: 4.8,
                     image:
                       "https://asianbeautyessentials.com/cdn/shop/files/1.01_-_Real_Nature_Mung_Bean_Face_Mask.png?v=1666400219&width=700",
@@ -54,7 +54,7 @@ const ProductCarousel: React.FC = () => {
                   {
                     id: 5,
                     name: "Face Mask",
-                    price: 120000,
+                    price: 120,
                     rating: 4.8,
                     image:
                       "https://images-static.nykaa.com/media/catalog/product/1/b/1be527cSOTRU00000004_a4.jpg?tr=w-500",

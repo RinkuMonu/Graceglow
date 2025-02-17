@@ -2,7 +2,7 @@ export const products = [
 
   {
     id: 1,
-    name: "Biotique face mask",
+    name: "Biotique face mask", 
     price: 240,
     rating: 4.6,
     image:

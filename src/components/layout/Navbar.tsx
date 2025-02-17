@@ -55,15 +55,12 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
   };
 
   const categories = [
-  
-"Face Mask",
-"Hair Oil",
-"Soap",
-"Gel",
-"Serum",
-
-"Face Wash",
-
+    "Face Mask",
+    "Hair Oil",
+    "Soap",
+    "Gel",
+    "Serum",
+    "Face Wash",
   ];
   console.log("userdataaaaaaaaa", user);
 
@@ -76,7 +73,11 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
             <div className="flex items-center justify-between h-24">
               {/* Logo */}
               <Link to="/" className="flex items-center">
-                <img src={img1} alt="Logo"  className="w-16 sm:w-20 md:w-24 lg:w-28" />
+                <img
+                  src={img1}
+                  alt="Logo"
+                  className="w-16 sm:w-20 md:w-24 lg:w-28"
+                />
               </Link>
 
               {/* Mobile Search Toggle */}
@@ -145,25 +146,25 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                       </span>
                     </Link>
                     {user && (
-    <div className="absolute hidden group-hover:block bg-white shadow-md rounded-lg  p-2 z-10">
-      <ul className="text-gray-700">
-        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
-          Your Orders
-        </li>
-        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
-          Profile
-        </li>
-        <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
-          <button
-            onClick={handleLogout}
-            className="hover:text-red-600 text-left w-full"
-          >
-            Logout
-          </button>
-        </li>
-      </ul>
-    </div>
-  )}
+                      <div className="absolute hidden group-hover:block bg-white shadow-md rounded-lg  p-2 z-10">
+                        <ul className="text-gray-700">
+                          <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+                            Your Orders
+                          </li>
+                          <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+                            Profile
+                          </li>
+                          <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+                            <button
+                              onClick={handleLogout}
+                              className="hover:text-red-600 text-left w-full"
+                            >
+                              Logout
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                   {/* Wishlist and Cart */}
                   <div className="flex items-center sm:gap-6">
@@ -316,7 +317,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                 <div className="flex items-center justify-between h-20">
                   {/* Logo */}
                   <Link to="/" className="flex items-center">
-                    <img src={img1} alt="Logo" className="w-6 sm:w-16" />
+                    <img src={img1} alt="Logo" className="w-16 sm:w-20 md:w-24 lg:w-28" />
                   </Link>
 
                   {/* Desktop Navigation */}

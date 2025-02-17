@@ -53,7 +53,7 @@ const Banner: React.FC = () => {
                 )}
               </li> */}
               <li className="text-center mt-3">
-                <a className="text-green-500 hover:underline">View all</a>
+                <a className="text-green-500 hover:underline cursor-pointer">View all</a>
               </li>
             </ul>
           </div>
