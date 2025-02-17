@@ -18,7 +18,7 @@ const Dropdown: React.FC<DropdownProps> = ({ categories }) => {
       <button
         id="dropdownDefaultButton"
         onClick={toggleDropdown}
-        style={{ backgroundColor:"rgb(82, 82, 162)" ,
+        style={{ backgroundColor:"rgb(85 131 61)" ,
             height:"49px",
             width:"275px",
             gap:"25px"

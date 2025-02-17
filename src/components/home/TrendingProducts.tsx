@@ -43,7 +43,7 @@ const TrendingProducts = ({
     <section className="py-16 bg-white">
       <div className="container  sm:px-4">
         <h2 className="text-4xl font-bold mb-8">
-          <span className="text-[#5252a2]">Trending</span> Products
+          <span className="text-[#55833d]">Trending</span> Products
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -254,7 +254,7 @@ const TrendingProducts = ({
                                 {/* Buy Now */}
                                 <div className="mb-4">
                                   <Link to="/address">
-                                    <button className="w-full px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+                                    <button className="w-full px-4 py-2 text-white bg-[#55833d] rounded hover:bg-[#557e3f]">
                                       Buy Now
                                     </button>
                                   </Link>
