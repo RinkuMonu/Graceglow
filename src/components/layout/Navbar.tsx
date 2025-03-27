@@ -148,12 +148,12 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick, cartItemCount }) => {
                     {user && (
                       <div className="absolute hidden group-hover:block bg-white shadow-md rounded-lg  p-2 z-10">
                         <ul className="text-gray-700">
-                          <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
+                          {/* <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
                             Your Orders
                           </li>
                           <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
                             Profile
-                          </li>
+                          </li> */}
                           <li className="py-1 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
                             <button
                               onClick={handleLogout}

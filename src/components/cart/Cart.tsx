@@ -38,56 +38,75 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
     dispatch(removeItemFromCart(id));
   };
 
+  // const handleCheckout = () => {
+  //   const options = {
+  //     key: "rzp_test_qWAN0qGk5syg5o",
+  //     amount: total * 100,
+  //     currency: "INR",
+  //     name: "DigihubTech",
+  //     description: "Transaction",
+  //     image: "https://your-logo-url.com/logo.png",
+  //     handler: function (response: any) {
+  //       Swal.fire({
+  //         title: "Payment Successful",
+  //         html: `
+  //           <p><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
+  //           <p>Thank you for your payment!</p>
+  //         `,
+  //         icon: "success",
+  //       });
+  //     },
+  //     prefill: {
+  //       name: "rahul",
+  //       email: "rahul@example.com",
+  //       contact: "7357444454",
+  //     },
+  //     theme: {
+  //       color: "#4d44dd",
+  //     },
+  //   };
+
+  //   const razorpay = new Razorpay(options);
+
+  //   razorpay.on("payment.failed", function (response: any) {
+  //     Swal.fire({
+  //       title: "Payment Failed",
+  //       html: `
+  //         <p><strong>Code:</strong> ${response.error.code}</p>
+  //         <p><strong>Description:</strong> ${response.error.description}</p>
+  //         <p><strong>Reason:</strong> ${response.error.reason}</p>
+  //       `,
+  //       icon: "error",
+  //     });
+  //   });
+
+  //   razorpay.open();
+  // };
   const handleCheckout = () => {
-    const options = {
-      key: "rzp_test_qWAN0qGk5syg5o",
-      amount: total * 100,
-      currency: "INR",
-      name: "DigihubTech",
-      description: "Transaction",
-      image: "https://your-logo-url.com/logo.png",
-      handler: function (response: any) {
-        Swal.fire({
-          title: "Payment Successful",
-          html: `
-            <p><strong>Payment ID:</strong> ${response.razorpay_payment_id}</p>
-            <p>Thank you for your payment!</p>
-          `,
-          icon: "success",
-        });
-      },
-      prefill: {
-        name: "rahul",
-        email: "rahul@example.com",
-        contact: "7357444454",
-      },
-      theme: {
-        color: "#4d44dd",
-      },
-    };
-
-    const razorpay = new Razorpay(options);
-
-    razorpay.on("payment.failed", function (response: any) {
+    const token = localStorage.getItem("userData"); // Check login status
+    if (!token) {
       Swal.fire({
-        title: "Payment Failed",
-        html: `
-          <p><strong>Code:</strong> ${response.error.code}</p>
-          <p><strong>Description:</strong> ${response.error.description}</p>
-          <p><strong>Reason:</strong> ${response.error.reason}</p>
-        `,
-        icon: "error",
+        title: "Login Required",
+        text: "You need to login before proceeding to checkout.",
+        icon: "warning",
+        confirmButtonText: "Go to Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+          onClose(); // Redirect to login page
+        }
       });
-    });
+      return;
+    }
 
-    razorpay.open();
+    // If logged in, navigate to checkout page
+    navigate("/address");
+    onClose(); // Close Cart Modal
   };
-
   return (
     <div
-      className={`fixed inset-0 z-50 flex justify-end  transition-transform duration-700 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
+      className={`fixed inset-0 z-50 flex justify-end  transition-transform duration-700 ${isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
     >
       {/* Overlay */}
       <div
@@ -166,16 +185,20 @@ const Cart: React.FC<CartProps> = ({ isOpen, onClose, cartItems }) => {
           <p className="mt-1 text-sm text-gray-500">
             Shipping and taxes calculated at checkout
           </p>
-
+       
           <div className="mt-4">
-            <Link to="/address">
+            {total === 0 ? (
+              <div className="flex justify-center">
+                <p>Nothing To Cart</p>
+              </div>
+            ) : (
               <button
-                onClick={onClose}
-                  className="w-full bg-[#55833d] text-white py-2 rounded-lg hover:bg-[#55833d]"
+                onClick={handleCheckout} // Call handleCheckout function
+                className="w-full bg-[#55833d] text-white py-2 rounded-lg hover:bg-[#55833d]"
               >
                 Checkout
               </button>
-            </Link>
+            )}
           </div>
         </div>
 
