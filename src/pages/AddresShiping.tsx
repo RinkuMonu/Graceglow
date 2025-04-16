@@ -148,7 +148,7 @@ function AddressShiping({ cartItems }) {
       const response = await axios.post(
         "https://api.worldpayme.com/api/v1.1/createUpiIntent",
         {
-          amount: 1,
+          amount: total,
           reference: reference, // Use the generated reference number
           name: userdata.name,
           mobile: userdata.phone,
