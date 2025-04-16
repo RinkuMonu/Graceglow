@@ -142,13 +142,13 @@ function AddressShiping({ cartItems }) {
   const handlePayment = async () => {
     setIsLoading(true)
     const reference = generateReferenceNumber(); // Generate reference number
-    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI4IiwianRpIjoiOTVjOWVhYjgxOTgzN2U5NDE5YWJkN2VhMDk3MDA3M2EyZWE5NTg0NjVmOTdjNjYyOGUwYTkwOTZmZGFjMzI3Y2NjZjBiOWMwYzUzNjBmMDciLCJpYXQiOjE3NDA1NTE0NzEuODgyNTQ3LCJuYmYiOjE3NDA1NTE0NzEuODgyNTQ4LCJleHAiOjE3NzIwODc0NzEuODgwMjc4LCJzdWIiOiIxNTkiLCJzY29wZXMiOltdfQ.IYmT-iFJBdlaVPNzop51TfDMDHt8iCXHQSHWRqVmt4zVMRudFDUnA7uUKEj0FqLMydoj0nFIrV40QMdJk0HprOU6Ub58SIgl-bx802eDvBg0pX0F5KeAPplVdDV4I6SHUOmLlNW7upPd3CP4ebU7d3ovoYWa3LPXxmgvwhnrX-sHeLOb-dyV3jDZZ0uCfDYasjajoXbs9IXphZ2ich1dC5eehbEG0cupWnrUfK1FPBsAu5VYVTof_BN_hxGVVsh5R78zp1tssx-Duj5X11U4KDgTCSzLu9k-vpwUactTG_dvLX1DUpbsDTUqIvyATn3JH9fCAaWadKEWdW8XSXrKs21h0GKYY-c2jhQ5E2np5KdzfEeRx1kBVK4bPew3yFaNQAb6rMxgg4k48-W9baXv9gd_-dEjarwso64N_oEYKNjCIhz9fjBWhdccoAb7WywJXF3Y1Dq7onc3AdSGGsdwH28AyCmP5MiSsrvGgBH6FHM545VkHHV-MTv6ouLqqqxRhnFlEqfr5_EAW3uQ_O3x5mDUh76LfnOR2_Ds-8EuwdT-iPXLOKGAfSnMkFMZtKGpXEmh0oC1GkzsicpU6gROgv-wviHoFKhk-snEYlMNEEZVV8MvBzfu1r9AnXpslovBPwNNTQ5D-kd3UxuD6UuwRmPmiua9Fw_3q2i_SiXIaZg"
+    const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI4IiwianRpIjoiYzNhNWRmMzEwODdkYTY4YzUxN2IwZTRjMGU0NGIyNmFmOWM4ODJlOWJiZWYxZDM3NmY5ZjRiOTcxM2VhZWFmYjZkOTgyMjYxMDYwOGI3ODYiLCJpYXQiOjE3NDQ3MTI2OTguMjIxMzYzLCJuYmYiOjE3NDQ3MTI2OTguMjIxMzY2LCJleHAiOjE3NzYyNDg2OTguMjE4NzY3LCJzdWIiOiIyNDkiLCJzY29wZXMiOltdfQ.VWB2ejh3M4HXA3hAO37qbOV1Ylx5wKZ_NK1GQK7PrgY0S6xAnQwE_MwcNn-ln_aPFt5cz_ZzeTmAKkLmQh9oOJbHXRmA8MFG_WcWm6HPZt_F_JqyfKdtmW9rgv27PuNtozLIpzUUTed8RMXh6ci2wjqRFVng-jVrFkb-IHJB2Ivm3OjO8wH4CHXF8yvtQVKnCCg01r3IyLdcB1KtwK6Q_Rta8iNTimKTsGxJ_FnnOjCuYPETuP1dJLVXB9F_EmxZYK59Z_Cc7NWsDn_fMmRB4sJG3TtG9eSlwl_wJ8pIy4ou8uyiedRqSHMPgHva4Pk6OY8g4lGr4gxb3ry4S5ax5aRxTtmBt64xn0Wgg5tYKxHON8A7_t0F0G-aQeWO1CxcYbF2lfU507e9X9NE8TeGzoexuVI2NGiOptJG9oRlTDNEL981hvucdkSfi6DQVG7vrD7DbFs5XvikbxpPz4ooE7JSPzNnLBPPkj7Yl17DIgWCIgSzrVgEsuW5RcuTURLVrtPRv1qX7lgiXtqxf_TrwAaoOaYnTTinZYoQmP-uyPy8krH0Sr42CtjIRYKYBNWJV0jXzgH36RXVoiOxq8w7rmdGqkbCs4CNDoX6FhJa5dSwjz0tn9t0Dt2NMogyHf4zxQDHdptkSN90sXhoAFUdYUlVRfZ7Z8UUSTXOW2j6Fsw"
 
     try {
       const response = await axios.post(
         "https://api.worldpayme.com/api/v1.1/createUpiIntent",
         {
-          amount: total,
+          amount: 1,
           reference: reference, // Use the generated reference number
           name: userdata.name,
           mobile: userdata.phone,
@@ -163,10 +163,12 @@ function AddressShiping({ cartItems }) {
           },
         }
       );
-  
+
+      
       console.log("responseeeeee", response);
-      console.log("responseeeeee", response.data?.payment_link);
-      console.log("responseeeeee", response.data?.data?.payment_link);
+      console.log("responseeeeeerr", response.data?.data?.payment_link);
+
+
       const paymentLink = response.data?.data?.payment_link;
       console.log(paymentLink)
       const cleanedUrl = paymentLink.replace(/\\/g, "");
@@ -649,7 +651,7 @@ function AddressShiping({ cartItems }) {
               </div>
 
               {/* Coupon Section */}
-              <div className="my-6">
+              {/* <div className="my-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Wallet className="w-5 h-5 text-gray-400" />
                   <span className="font-medium">Available Coupons</span>
@@ -697,7 +699,7 @@ function AddressShiping({ cartItems }) {
                     </button>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
