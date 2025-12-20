@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { State, City } from "country-state-city";
-import { ChevronLeft, Wallet, Check } from "lucide-react";
+// import { State, City } from "country-state-city";
+import { ChevronLeft, Check } from "lucide-react";
 import logo from "../assest/logo.webp";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -16,13 +16,13 @@ interface Address {
   isDefault?: boolean;
 }
 
-interface OrderItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+// interface OrderItem {
+//   id: string;
+//   name: string;
+//   price: number;
+//   quantity: number;
+//   image: string;
+// }
 
 interface ShippingMethod {
   id: string;
@@ -31,11 +31,11 @@ interface ShippingMethod {
   price: number;
 }
 
-interface CouponCode {
-  code: string;
-  discount: string;
-  description: string;
-}
+// interface CouponCode {
+//   code: string;
+//   discount: string;
+//   description: string;
+// }
 
 const addresses: Address[] = [
   {
@@ -67,18 +67,18 @@ const shippingMethods: ShippingMethod[] = [
   { id: "3", name: "Flat Rate", description: "Fixed rate shipping", price: 20 },
 ];
 
-const coupons: CouponCode[] = [
-  {
-    code: "SAVE80",
-    discount: "80%",
-    description: "Discount 80% for all orders",
-  },
-  {
-    code: "FLAT500",
-    discount: "₹500",
-    description: "Flat ₹500 off on all orders",
-  },
-];
+// const coupons: CouponCode[] = [
+//   {
+//     code: "SAVE80",
+//     discount: "80%",
+//     description: "Discount 80% for all orders",
+//   },
+//   {
+//     code: "FLAT500",
+//     discount: "₹500",
+//     description: "Flat ₹500 off on all orders",
+//   },
+// ];
 
 
 function AddressShiping({ cartItems }) {
@@ -94,7 +94,7 @@ function AddressShiping({ cartItems }) {
   const [selectedAddress, setSelectedAddress] = useState<string>("");
   const [selectedShipping, setSelectedShipping] = useState<string>("1");
   const [selectedPayment, setSelectedPayment] = useState<string>("phonepe");
-  const [showCouponInput, setShowCouponInput] = useState(false);
+  // const [showCouponInput, setShowCouponInput] = useState(false);
 
 
   const subtotal = cartItems.reduce(
@@ -127,13 +127,13 @@ function AddressShiping({ cartItems }) {
     shippingMethods.find((m) => m.id === selectedShipping)?.price || 0;
   const total = subtotal + shipping;
 
-  const data = {
-    name: userdata.name,
-    amount: total,
-    number: userdata.phone,
-    MUID: "MUID" + Date.now(),
-    transactionId: 'T' + Date.now(),
-  }
+  // const data = {
+  //   name: userdata.name,
+  //   amount: total,
+  //   number: userdata.phone,
+  //   MUID: "MUID" + Date.now(),
+  //   transactionId: 'T' + Date.now(),
+  // }
   const generateReferenceNumber = () => {
     const timestamp = Date.now(); // Get current timestamp
     const randomNum = Math.floor(Math.random() * 10000); // Generate a random number between 0 and 9999
@@ -171,7 +171,7 @@ function AddressShiping({ cartItems }) {
 
       const paymentLink = response.data?.data?.payment_link;
       console.log(paymentLink)
-      const cleanedUrl = paymentLink.replace(/\\/g, "");
+      // const cleanedUrl = paymentLink.replace(/\\/g, "");
 
       window.location.href = paymentLink;
 

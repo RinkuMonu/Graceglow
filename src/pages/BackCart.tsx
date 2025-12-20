@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeItemFromCart, updateQuantity } from "../reduxslice/CartSlice"
+import {  updateQuantity } from "../reduxslice/CartSlice"
 import { Link } from "react-router-dom";
 
 
 const ShoppingCart: React.FC = ({cartItems}) => {
   const dispatch = useDispatch()
-  const [quantity, setQuantity] = useState(2); // Default quantity
-  const [subtotal, setSubtotal] = useState(14999 * 2); // Default subtotal
+  // const [quantity, setQuantity] = useState(2); // Default quantity
+const [subtotal] = useState(14999 * 2); // Default subtotal
   const [coupon, setCoupon] = useState("");
   const [discount, setDiscount] = useState(0); // Default discount value
   // const [total, setTotal] = useState(subtotal); // Total after discount
   
 
   const originalPrice = 31000; // Original price for one product
-  const pricePerItem = 14999; // Discounted price per item
+  // const pricePerItem = 14999; // Discounted price per item
 
-    const total = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
+   const total = cartItems.reduce(
+  (sum, item) =>
+    sum + item.price * item.quantity * (1 - discount / 100),
+  0
+);
   
     const handleIncrement = (id: string) => {
       const item = cartItems.find((i) => i.id === id);
@@ -35,32 +36,32 @@ const ShoppingCart: React.FC = ({cartItems}) => {
       }
     };
   
-    const handleDelete = (id: string) => {
-      dispatch(removeItemFromCart(id));
-    };
+    // const handleDelete = (id: string) => {
+    //   dispatch(removeItemFromCart(id));
+    // };
 
   // Function to handle quantity increment
-  const incrementQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    updateSubtotal(newQuantity);
-  };
+  // const incrementQuantity = () => {
+  //   const newQuantity = quantity + 1;
+  //   setQuantity(newQuantity);
+  //   updateSubtotal(newQuantity);
+  // };
 
   // Function to handle quantity decrement
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-      updateSubtotal(newQuantity);
-    }
-  };
+  // const decrementQuantity = () => {
+  //   if (quantity > 1) {
+  //     const newQuantity = quantity - 1;
+  //     setQuantity(newQuantity);
+  //     updateSubtotal(newQuantity);
+  //   }
+  // };
 
   // Function to update subtotal and total
-  const updateSubtotal = (newQuantity: number) => {
-    const newSubtotal = newQuantity * pricePerItem;
-    setSubtotal(newSubtotal);
-    setTotal(newSubtotal - discount); // Recalculate total after discount
-  };
+  // const updateSubtotal = (newQuantity: number) => {
+  //   const newSubtotal = newQuantity * pricePerItem;
+  //   setSubtotal(newSubtotal);
+  //   setTotal(newSubtotal - discount); // Recalculate total after discount
+  // };
 
   // Function to apply coupon code
   const applyCoupon = () => {

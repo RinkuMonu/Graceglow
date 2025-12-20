@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 // import { Pagination, Navigation, Autoplay } from "swiper/modules";
 // import "swiper/css";
@@ -22,7 +22,7 @@ import banner4 from "../../assest/banner4.webp";
 import { Link } from "react-router-dom";
 
 const Banner: React.FC = () => {
-  const [showSubMenu, setShowSubMenu] = useState(false);
+  // const [showSubMenu, setShowSubMenu] = useState(false);
   return (
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-12 gap-4">

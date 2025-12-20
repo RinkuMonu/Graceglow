@@ -1,7 +1,7 @@
 import React from "react";
 import { X, ShoppingCart, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeItemFromCart, updateQuantity } from "../../reduxslice/CartSlice";
 
