@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Banner from "../components/home/Banner";
 import TrendingProducts from "../components/home/TrendingProducts";
-import TopCategories from "../components/home/TopCategories";
-import Newsletter from "../components/home/Newsletter";
-import axios from "axios";
-import ProductCard from "../components/products/ProductCard";
+// import TopCategories from "../components/home/TopCategories";
+// import Newsletter from "../components/home/Newsletter";
+// import axios from "axios";
+// import ProductCard from "../components/products/ProductCard";
 import ProductCarousel from "../components/home/ProductCard";
 
 interface HomeProps {
@@ -12,7 +12,7 @@ interface HomeProps {
   onCartClick: () => void;
 }
 
-export default function Home({ addToCart, onCartClick }: HomeProps) {
+export default function Home({ addToCart }: HomeProps) {
   // const [loading2, setLoading2] = useState(false);
 
   // const data = {

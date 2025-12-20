@@ -6,11 +6,10 @@ import shape4 from "../../assest/shape-4.png";
 import plane from "../../assest/plane.png";
 
 export default function Newsletter() {
-  const [email, setEmail] = useState<string>("");
+const [email, setEmail] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Submit logic here (e.g., send email to an API)
     console.log("Email submitted:", email);
   };
 
@@ -112,11 +111,13 @@ export default function Newsletter() {
                 />
 
                 <div className="tp-subscribe-input relative">
-                  <input
-                    type="email"
-                    placeholder="Enter Your Email"
-                    className="bg-white border-0 rounded-xl shadow-md font-sans h-16 px-16 w-full"
-                  />
+                 <input
+  type="email"
+  placeholder="Enter Your Email"
+  value={email} // Link the state to the input value
+  onChange={(e) => setEmail(e.target.value)} // Update state on every keystroke
+  className="bg-white border-0 text-black rounded-xl shadow-md font-sans h-16 px-16 w-full"
+/>
                   <button
                     type="submit"
                     className="absolute right-0 top-0 h-full px-8 bg-black text-white rounded-r-xl shadow-md hover:bg-gray-800"

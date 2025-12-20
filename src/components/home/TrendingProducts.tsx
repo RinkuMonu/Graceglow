@@ -2,11 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { products } from "../../data/products"; // Import shared products data
 import { Link } from "react-router-dom";
-
+export interface Product {
+  id: number | string;
+  name: string;
+  price: number;
+  image: string;
+  rating: number;
+  category: string;
+}
 const TrendingProducts = ({
   addToCart,
 }: {
-  addToCart: (product: any) => void;
+  addToCart: (product: Product) => void;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
 

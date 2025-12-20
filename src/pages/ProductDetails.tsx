@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../data/products"; // Assuming you have sample products data
 import { Product } from "../types";
-import ProductCard from "../components/products/ProductCard";
+// import ProductCard from "../components/products/ProductCard";
 import {
   FaFacebookF,
   FaTwitter,
